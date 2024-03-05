@@ -1,10 +1,8 @@
-import { Fragment } from "react/jsx-runtime";
 import "./Style.css";
-import DataRange from "./components/DataRange";
 import Header from "./components/Header";
 import SideNav from "./components/SideNav";
-import Summary from "./pages/Summary";
 import { DataContextProvider } from "./context/DataContext";
+import Summary from "./pages/Summary";
 
 function App() {
   return (
@@ -13,7 +11,6 @@ function App() {
         <SideNav />
         <main>
           <Header />
-          <DataRange />
           <Summary />
         </main>
       </DataContextProvider>

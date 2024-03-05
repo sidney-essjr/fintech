@@ -1,4 +1,5 @@
-import { CSSProperties } from "react";
+import { CSSProperties, Dispatch } from "react";
+import { setSearchDate, useData } from "../context/DataContext";
 
 const style: CSSProperties = {
   padding: "var(--gap) var(--gap-s)",
@@ -10,13 +11,31 @@ const style: CSSProperties = {
   textTransform: "capitalize",
 };
 
-function getMonthName(decreaseMonth: number) {
+function getMonthAndName(decreaseMonth: number) {
   const date = new Date();
-  date.setDate(date.getMonth() + decreaseMonth);
+  date.setMonth(date.getMonth() + decreaseMonth);
   const monthName = Intl.DateTimeFormat("en", { month: "long" }).format(date);
-  return monthName;
+  return { date, monthName };
+}
+
+function setMonth(
+  date: Date,
+  setStart: Dispatch<React.SetStateAction<string>>,
+  setEnd: Dispatch<React.SetStateAction<string>>
+) {
+  const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+  const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  setStart(setSearchDate(firstDay, 0));
+  setEnd(setSearchDate(lastDay, 0));
 }
 
 export default function MonthBtn({ decreaseMonth }: { decreaseMonth: number }) {
-  return <button style={style}>{getMonthName(decreaseMonth)}</button>;
+  const { setStart, setEnd } = useData();
+  const { date, monthName } = getMonthAndName(decreaseMonth);
+
+  return (
+    <button style={style} onClick={() => setMonth(date, setStart, setEnd)}>
+      {monthName}
+    </button>
+  );
 }

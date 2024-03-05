@@ -32,7 +32,7 @@ export const useData = () => {
   return context;
 };
 
-function getInitialDate(date: Date = new Date(), daysAgo: number) {
+export function setSearchDate(date: Date = new Date(), daysAgo: number) {
   date.setDate(date.getDate() - daysAgo);
   const dd = String(date.getDate()).padStart(2, "0");
   const mm = String(date.getMonth() + 1).padStart(2, "0");
@@ -41,8 +41,8 @@ function getInitialDate(date: Date = new Date(), daysAgo: number) {
 }
 
 export const DataContextProvider = ({ children }: PropsWithChildren) => {
-  const [start, setStart] = useState(getInitialDate(undefined, 7));
-  const [end, setEnd] = useState(getInitialDate(undefined, 0));
+  const [start, setStart] = useState(setSearchDate(undefined, 7));
+  const [end, setEnd] = useState(setSearchDate(undefined, 0));
   const url = `https://data.origamid.dev/vendas/?inicio=${start}final=${end}`;
 
   const { data, loading, error } = useFetch<Data>(url);
