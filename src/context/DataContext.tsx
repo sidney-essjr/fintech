@@ -11,13 +11,13 @@ type Data = {
   id: string;
   nome: string;
   preco: number;
-  status: string;
+  status: "pago" | "falha" | "processando";
   pagamento: "boleto" | "pix" | "cartao";
   parcelas: number | null;
   data: string;
 };
 
-type IFetchData = FetchState<Data> & {
+type IFetchData = FetchState<Data[]> & {
   start: string;
   setStart: Dispatch<React.SetStateAction<string>>;
   end: string;
@@ -43,9 +43,9 @@ export function setSearchDate(date: Date = new Date(), daysAgo: number) {
 export const DataContextProvider = ({ children }: PropsWithChildren) => {
   const [start, setStart] = useState(setSearchDate(undefined, 7));
   const [end, setEnd] = useState(setSearchDate(undefined, 0));
-  const url = `https://data.origamid.dev/vendas/?inicio=${start}final=${end}`;
+  const url = `https://data.origamid.dev/vendas/?inicio=${start}&final=${end}`;
 
-  const { data, loading, error } = useFetch<Data>(url);
+  const { data, loading, error } = useFetch<Data[]>(url);
 
   const context = (
     <DataContext.Provider
