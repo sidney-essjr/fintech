@@ -2,7 +2,7 @@ import { useData } from "../context/DataContext";
 
 export default function Summary() {
   const { data } = useData();
-  if (data === null) return null;
+  if (!data) return null;
   return (
     <section>
       <div className="resumo flex mb">
@@ -34,7 +34,7 @@ export default function Summary() {
           </span>
         </div>
       </div>
-      <div className="box">Gráficos</div>
+      <div className="box mb">Gráficos</div>
     </section>
   );
 }

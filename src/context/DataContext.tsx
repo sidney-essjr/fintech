@@ -7,7 +7,7 @@ import {
 } from "react";
 import useFetch, { FetchState } from "../hooks/useFetch";
 
-type Data = {
+export type ISale = {
   id: string;
   nome: string;
   preco: number;
@@ -17,7 +17,7 @@ type Data = {
   data: string;
 };
 
-type IFetchData = FetchState<Data[]> & {
+type IFetchData = FetchState<ISale[]> & {
   start: string;
   setStart: Dispatch<React.SetStateAction<string>>;
   end: string;
@@ -45,7 +45,7 @@ export const DataContextProvider = ({ children }: PropsWithChildren) => {
   const [end, setEnd] = useState(setSearchDate(undefined, 0));
   const url = `https://data.origamid.dev/vendas/?inicio=${start}&final=${end}`;
 
-  const { data, loading, error } = useFetch<Data[]>(url);
+  const { data, loading, error } = useFetch<ISale[]>(url);
 
   const context = (
     <DataContext.Provider
