@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import { ISale } from "../context/DataContext";
+import Loading from "../components/Loading";
 
 export default function Sale() {
   const { id } = useParams();
@@ -8,7 +9,8 @@ export default function Sale() {
     `https://data.origamid.dev/vendas/${id}`
   );
 
-  if (data === null) return null;
+  if (loading) return <Loading />;
+  if (!data) return null;
 
   return (
     <div>
