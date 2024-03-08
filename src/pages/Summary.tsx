@@ -1,3 +1,4 @@
+import SalesChart from "../components/SalesChart";
 import { useData } from "../context/DataContext";
 
 export default function Summary() {
@@ -34,7 +35,9 @@ export default function Summary() {
           </span>
         </div>
       </div>
-      <div className="box mb">Gráficos</div>
+      <div className="box mb">
+        <SalesChart />
+      </div>
     </section>
   );
 }
