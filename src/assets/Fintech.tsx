@@ -1,4 +1,4 @@
-const FintechSVG = ({ title }: { title: string }) => {
+const Fintech = ({ title }: { title: string }) => {
   return (
     <svg
       className="mb"
@@ -15,4 +15,4 @@ const FintechSVG = ({ title }: { title: string }) => {
   );
 };
 
-export default FintechSVG;
+export default Fintech;
