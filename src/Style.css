@@ -130,9 +130,9 @@ background: var(--color-3);
   color: var(--color-1);
 }
 
-/* venda */
+/* vendas */
 
-.venda {
+.vendas {
   display: grid;
   grid-template-columns: auto auto 1fr;
   gap: var(--gap);
@@ -140,11 +140,21 @@ background: var(--color-3);
   align-items: center;
 }
 
-.venda div:last-child {
+.vendas div:last-child {
   justify-self: end;
 }
 
-.venda a {
+.vendas a {
   text-decoration: none;
   color: inherit;
+}
+
+.venda {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--gap-s);
+}
+
+.venda li {
+  color: var(--color-1);
 }
