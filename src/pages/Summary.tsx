@@ -1,8 +1,9 @@
+import Loading from "../components/Loading";
 import SalesChart from "../components/SalesChart";
 import { useData } from "../context/DataContext";
 
 export default function Summary() {
-  const { data } = useData();
+  const { data, loading } = useData();
   if (!data) return null;
   return (
     <section>
@@ -35,8 +36,8 @@ export default function Summary() {
           </span>
         </div>
       </div>
-      <div className="box mb">
-        <SalesChart data={data} />
+      <div className="box">
+        {loading ? <Loading /> : <SalesChart data={data} />}
       </div>
     </section>
   );

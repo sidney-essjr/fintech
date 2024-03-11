@@ -14,7 +14,7 @@ const style: CSSProperties = {
 function getMonthAndName(decreaseMonth: number) {
   const date = new Date();
   date.setMonth(date.getMonth() + decreaseMonth);
-  const monthName = Intl.DateTimeFormat("en", { month: "long" }).format(date);
+  const monthName = Intl.DateTimeFormat("pt-br", { month: "long" }).format(date);
   return { date, monthName };
 }
 

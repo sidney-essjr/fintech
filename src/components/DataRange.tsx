@@ -6,17 +6,17 @@ export default function DataRange() {
   return (
     <form className="box flex" onSubmit={(e) => e.preventDefault()}>
       <DataInput
-        id="start"
-        name="start"
-        label="Start"
+        id="inicio"
+        name="inicio"
+        label="Inicio"
         type="date"
         value={start}
         onChange={({ target }) => setStart(target.value)}
       />
       <DataInput
-        id="end"
-        name="end"
-        label="End"
+        id="fim"
+        name="fim"
+        label="Fim"
         type="date"
         value={end}
         onChange={({ target }) => setEnd(target.value)}
