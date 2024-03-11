@@ -36,7 +36,7 @@ export default function Summary() {
         </div>
       </div>
       <div className="box mb">
-        <SalesChart />
+        <SalesChart data={data} />
       </div>
     </section>
   );
